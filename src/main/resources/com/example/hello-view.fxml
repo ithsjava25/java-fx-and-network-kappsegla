@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
 <StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="com.example.HelloController">
     <VBox alignment="CENTER">
@@ -12,5 +13,7 @@
         <Label fx:id="currentDateAndTime" text="" />
         <Button fx:id="updateButton" text="Stop" onAction="#stopButtonAction"/>
         <Label fx:id="secondDateTime" text="${controller.model.dateTime}"/>
+        <CheckBox fx:id="toggle" text="Leave more comments"/>
+        <TextField fx:id="textField1" disable="${!toggle.selected}"/>
     </VBox>
 </StackPane>
