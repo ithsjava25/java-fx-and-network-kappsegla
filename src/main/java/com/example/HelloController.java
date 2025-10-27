@@ -29,18 +29,22 @@ public class HelloController {
 
     private Timeline timeline;
 
+    public HelloModel getModel(){
+        return model;
+    }
+
     @FXML
     private void initialize() {
+        if (currentDateAndTime != null)
+            currentDateAndTime.textProperty().bind(model.dateTimeProperty());
+
         if (messageLabel != null) {
             messageLabel.setText(model.getGreeting());
         }
-        if (currentDateAndTime != null)
-            currentDateAndTime.setText(LocalDateTime.now()
-                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             // Update UI directly
-            currentDateAndTime.setText(LocalDateTime.now()
+            model.setDateTime(LocalDateTime.now()
                     .format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
         }));
         timeline.setCycleCount(Animation.INDEFINITE); // Repeat forever
@@ -48,7 +52,7 @@ public class HelloController {
     }
 
     public void stopButtonAction(ActionEvent actionEvent) {
-        timeline.stop();
         updateButton.setDisable(true);
+        timeline.stop();
     }
 }

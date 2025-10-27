@@ -11,5 +11,6 @@
         <Label fx:id="messageLabel" text="Hello, JavaFX!"/>
         <Label fx:id="currentDateAndTime" text="" />
         <Button fx:id="updateButton" text="Stop" onAction="#stopButtonAction"/>
+        <Label fx:id="secondDateTime" text="${controller.model.dateTime}"/>
     </VBox>
 </StackPane>
