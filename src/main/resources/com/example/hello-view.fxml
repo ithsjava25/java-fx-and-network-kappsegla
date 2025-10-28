@@ -7,8 +7,8 @@
 <VBox stylesheets="@../../css/style.css"  alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelloController">
     <Label fx:id="messageLabel" text="0 poäng" />
     <HBox alignment="CENTER" spacing="20.0">
-        <ImageView image="${controller.model.noSmash}"/>
-        <ImageView image="${controller.model.noSmash}"/>
-        <ImageView image="${controller.model.noSmash}"/>
+        <ImageView image="${controller.model.first}" onMouseClicked="#image1"/>
+        <ImageView image="${controller.model.second}" onMouseClicked="#image2"/>
+        <ImageView image="${controller.model.third}" onMouseClicked="#image3"/>
     </HBox>
 </VBox>
