@@ -1,6 +1,8 @@
 package com.example;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
 
@@ -18,6 +20,8 @@ public class HelloModel {
     private final ObjectProperty<Image> first;
     private final ObjectProperty<Image> second;
     private final ObjectProperty<Image> third;
+
+    private IntegerProperty points;
 
     public HelloModel() {
         noSmash = new Image(getClass()
@@ -38,6 +42,8 @@ public class HelloModel {
         first = new SimpleObjectProperty<>(noSmash);
         second = new SimpleObjectProperty<>(noSmash);
         third = new SimpleObjectProperty<>(noSmash);
+
+        points = new SimpleIntegerProperty(0);
     }
 
     public Image getFirst() {
@@ -76,10 +82,29 @@ public class HelloModel {
         this.third.set(third);
     }
 
+    public int getPoints() {
+        return points.get();
+    }
+
+    public IntegerProperty pointsProperty() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points.set(points);
+    }
+
     public void smash(int lantern) {
-        //If image is not noSmash get a point and set image to noSmash
-
-
+        if (lantern == 0 && getFirst() != noSmash) {
+            setPoints(getPoints() + 1);
+            setFirst(noSmash);
+        } else if (lantern == 1 && getSecond() != noSmash) {
+            setPoints(getPoints() + 1);
+            setSecond(noSmash);
+        } else if (lantern == 2 && getThird() != noSmash) {
+            setPoints(getPoints() + 1);
+            setThird(noSmash);
+        }
     }
 
     public void changeImage(int lantern, int imageId) {

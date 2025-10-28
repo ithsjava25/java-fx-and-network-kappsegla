@@ -2,9 +2,10 @@ package com.example;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
@@ -15,10 +16,13 @@ public class HelloController {
     private final HelloModel model = new HelloModel();
 
     @FXML
-    private Label messageLabel;
+    private Text messageLabel;
 
     @FXML
     private void initialize() {
+        messageLabel.textProperty().bind(
+                Bindings.concat(model.pointsProperty().asString(), " poäng")
+        );
         startNextEvent();
     }
 
